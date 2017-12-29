@@ -1,0 +1,60 @@
+{% load staticfiles %}
+{% load rss_parse %}
+<html>
+  <head>
+    <title>Base</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Baloo+Tamma" rel="stylesheet" type='text/css'>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+</head>
+
+<body>
+  <div class="header">
+    <h1>News Host</h1>
+  </div>
+    <div class="content">
+      <div style="padding-left: 20px">
+          <div class="row">
+            <div class="col-md-8">
+              <h3>Federal:</h3>
+              {% for article in federal %}
+              <h4 style="padding-left: 20px"><a href={{article.short_url}}>{{article.title}}</h3></a>
+              <h5 style="padding-left: 30px">{{article.abstract}}</h4>
+              {% endfor %}
+              <br>
+              <h3>Senate:</h3>
+              {% for article in senate %}
+              <h4 style="padding-left: 20px"><a href={{article.link}}>{{article.title}}</h4></a>
+              <h5 style="padding-left: 30px">{{article.description|clean_desc|clean_unicode}}</h5>
+              {% endfor %}
+              <br>
+              <h3>State:</h3>
+              {% for article in state %}
+              <h4 style="padding-left: 20px"><a href={{article.link}}>{{article.title}}</h4></a>
+              <h5 style="padding-left: 30px">{{article.description|clean_desc|clean_unicode}}</h5>
+              {% endfor %}
+              <br>
+              <h3>Montgomery County:</h3>
+              {% for article in moco %}
+              <h4 style="padding-left: 20px"><a href={{article.link}}>{{article.title}}</h4></a>
+              <h5 style="padding-left: 30px">{{article.description|clean_desc|clean_unicode}}</h5>
+              {% endfor %}
+              <br>
+              <h3>Frederick County:</h3>
+              {% for article in fred %}
+              <h4 style="padding-left: 20px"><a href={{article.link}}>{{article.title}}</h4></a>
+              <h5 style="padding-left: 30px">{{article.description|clean_desc|clean_unicode}}</h5>
+              {% endfor %}
+              <br>
+              <h3>Carroll County:</h3>
+              {% for article in car %}
+              <h4 style="padding-left: 20px"><a href={{article.link}}>{{article.title}}</h4></a>
+              <h5 style="padding-left: 30px">{{article.description|clean_desc|clean_unicode}}</h5>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+    </div>
+  </body>
+</html>

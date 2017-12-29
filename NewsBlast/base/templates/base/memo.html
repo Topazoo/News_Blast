@@ -1,0 +1,61 @@
+{% load staticfiles %}
+{% load rss_parse %}
+<html>
+<body>
+
+<p style="text-align: center"><b>MEMORANDUM</b></p>
+<p><b>To:</b> Martha Sanchez</p>
+<p><b>From:</b> Peter Swanson</p>
+<p><b>Subject:</b> News</p>
+<p><b>Date:</b> {{date|date:"F jS, Y"}}</p>
+
+<br><hr><br>
+
+<p><b>Federal:</b></p>
+{% for article in federal %}
+<p><a href={{article.short_url}}>{{article.title}}</a></p>
+<p>{{article.abstract}}</p>
+{% endfor %}
+
+<br>
+
+<p><b>Senate:</b></p>
+{% for article in senate %}
+<p><a href={{article.link}}>{{article.title}}</a></p>
+<p>{{article.description|clean_desc|clean_unicode}}</p>
+{% endfor %}
+
+<br>
+
+<p><b>State:</b></p>
+{% for article in state %}
+<p><a href={{article.link}}>{{article.title}}</a></p>
+<p>{{article.description|clean_desc|clean_unicode}}</p>
+{% endfor %}
+
+<br>
+
+<p><b>Montgomery County:</b></p>
+{% for article in moco %}
+<p><a href={{article.link}}>{{article.title}}</a></p>
+<p>{{article.description|clean_desc|clean_unicode}}</p>
+{% endfor %}
+
+<br>
+
+<p><b>Frederick County:</b></p>
+{% for article in fred %}
+<p><a href={{article.link}}>{{article.title}}</a></p>
+<p>{{article.description|clean_desc|clean_unicode}}</p>
+{% endfor %}
+
+<br>
+
+<p><b>Carroll County:</b></p>
+{% for article in car %}
+<p><a href={{article.link}}>{{article.title}}</a></p>
+<p>{{article.description|clean_desc|clean_unicode}}</p>
+{% endfor %}
+
+</body>
+</html>
